@@ -84,7 +84,7 @@ app.get("/", (req, res) => {
 // async (req, res) → indica que a função é assíncrona, permitindo o uso de await dentro dela para operações assíncronas, como chamadas HTTP.
 
 
-app.get("/auth", async (req, res) => {
+app.get("/callback", async (req, res) => {
   const { code, state } = req.query;
 
   if (!code) {
