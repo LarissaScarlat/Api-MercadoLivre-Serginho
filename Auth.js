@@ -91,7 +91,7 @@ app.get("/callback", async (req, res) => {
     return res.status(400).send("Erro: código de autorização não recebido.");
   }
 
-    console.log("✅ Código recebido do Bling:", code);
+    console.log("✅ Código recebido do Mercado Livre:", code);
 
 // criação de credenciais em base64 Essa parte constrói um valor chamado credentials, usado normalmente no cabeçalho HTTP: Authorization: Basic <credenciais codificadas>
 //Buffer é uma classe do Node.js usada para manipular dados binários.
