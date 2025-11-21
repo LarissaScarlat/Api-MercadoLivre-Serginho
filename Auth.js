@@ -180,8 +180,6 @@ const tokenData = response.data;
 });
 //_____ROTA DE CALLBACK__FIM DA ROTA//
 
-//importando as rotas de produtos para o aplicativo principal
-app.use("/", produtosRouter); // Todas as rotas definidas em produtosRouter serão prefixadas com /api
 
 app.listen(PORT, () => {
     console.log(`🚀 Servidor rodando em https://api-bling-baratao.onrender.com/callback`);
