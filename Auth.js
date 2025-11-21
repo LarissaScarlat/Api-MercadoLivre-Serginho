@@ -175,7 +175,9 @@ const tokenData = response.data;
 
   console.log("💾 Tokens salvos com sucesso no arquivo tokens.json!");
 
-  } catch (error) {
+  } 
+  
+  catch (error) {
     console.error("❌ Erro ao obter tokens:", error.response?.data || error.message);
     res.status(500).send("Erro ao obter tokens de acesso.");
   }
