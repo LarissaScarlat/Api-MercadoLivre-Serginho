@@ -32,7 +32,8 @@ app.use(express.json());
 app.get("/", (req, res) => {
   const state = crypto.randomBytes(16).toString("hex");
 
-  const authUrl = `${process.env.TOKEN_URL}?response_type=code&client_id=${process.env.CLIENT_ID}&redirect_uri=${encodeURIComponent(process.env.REDIRECT_URI)}&state=${state}`;
+  const authUrl = `${process.env.AUTH_URL}?response_type=code&client_id=${process.env.CLIENT_ID}&redirect_uri=${encodeURIComponent(process.env.REDIRECT_URI)}&state=${state}`;
+
 
 
 
