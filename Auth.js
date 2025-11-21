@@ -28,10 +28,11 @@ app.use(express.json());
 //"/authorition" → é o caminho da rota. Quem coloca esse caminho é você, e ele pode ser qualquer coisa que faça sentido para sua aplicação.
 //(req, res) → são os objetos de requisição (req) e resposta (res) do Express. req contém informações sobre a requisição feita pelo cliente, e res é usado para enviar a resposta de volta ao cliente.
 // => { ... } → é a função que será executada quando essa rota for acessada. Dentro dessa função, você pode colocar o código que define o que deve acontecer quando alguém acessa essa rota.
+//state = é um parâmetro de segurança usado no OAuth2 para prevenir ataques CSRF (Cross-Site Request Forgery). Ele é um valor aleatório que você gera antes de iniciar o fluxo de autenticação e envia junto com a requisição de autorização. Quando o provedor de autenticação redireciona o usuário de volta para sua aplicação, ele inclui esse mesmo valor de state na resposta. Sua aplicação deve então verificar se o valor recebido corresponde ao valor que foi enviado inicialmente. Se os valores não coincidirem, isso indica que a requisição pode ter sido adulterada, e sua aplicação deve rejeitar a resposta.
 app.get("/", (req, res) => {
   const state = crypto.randomBytes(16).toString("hex");
 
-  const authUrl = `${process.env.TOKEN_URL_URL}?response_type=code&client_id=${process.env.CLIENT_ID}&redirect_uri=${encodeURIComponent(process.env.REDIRECT_URI)}&state=${state}`;
+  const authUrl = `${process.env.TOKEN_URL}?response_type=code&client_id=${process.env.CLIENT_ID}&redirect_uri=${encodeURIComponent(process.env.REDIRECT_URI)}&state=${state}`;
 
 
 
