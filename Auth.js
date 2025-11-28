@@ -5,6 +5,7 @@ import qs from "querystring";
 import crypto from "crypto";
 import fs from "fs";
 import cors from "cors";
+import PedidosVendasRouter from './BuscarPedidos.js';
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -64,6 +65,11 @@ app.get("/callback", async (req, res) => {
     res.status(500).send("Erro ao obter o token de acesso.");
   }
 });
+
+app.use('/', PedidosVendasRouter);
+
+
+
 
 app.listen(PORT, () => {
   console.log(`🚀 Servidor rodando em http://localhost:${PORT}`);
