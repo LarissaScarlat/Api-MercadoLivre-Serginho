@@ -46,7 +46,7 @@ app.get("/callback", async (req, res) => {
     // --- BODY CORRETO PARA ML ----------------
     const data = qs.stringify({
       grant_type: "authorization_code",
-      code,
+      code:code,
       redirect_uri: process.env.REDIRECT_URI
     });
 
