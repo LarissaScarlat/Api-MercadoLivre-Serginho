@@ -34,7 +34,7 @@ if (!dataInicial || !dataFinal) {
         return res.status(500).json({ error: "Acess token não encontrado. Autentique-se primeiro." });
     }
 
-    const url = `https://api.mercadolibre.com/orders/search?seller=${process.env.CLIENT_ID}&order.date_created.from=${encodeURIComponent(dataInicial)}&order.date_created.to=${encodeURIComponent(dataFinal)};`;
+    const url = `https://api.mercadolibre.com/orders/search?seller=${tokens.user_id}&order.date_created.from=${encodeURIComponent(dataInicial)}&order.date_created.to=${encodeURIComponent(dataFinal)};`;
 const response = await axios.get(url, {
     headers: {
         "Authorization": `Bearer ${tokens.access_token}`,
