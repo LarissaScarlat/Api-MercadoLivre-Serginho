@@ -2,8 +2,9 @@ import express from 'express';
 import fs from 'fs';
 import axios from 'axios';
 import 'dotenv/config';
+import { configDotenv } from 'dotenv';
 
-dotenv.config();
+configDotenv();
 
 
 
