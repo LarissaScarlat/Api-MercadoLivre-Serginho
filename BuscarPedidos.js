@@ -22,18 +22,19 @@ const router = express.Router();
 
 router.get ("/buscarpedidos", async (req, res) => {
 try {
-    const {DataInicial, Datafinal} = req.query;
+    const { dataInicial, dataFinal } = req.query;
 
-    if (!DataInicial || !Datafinal) {
-        return res.status(400).json({ error: "Parâmetros DataInicial e Datafinal são obrigatórios." });
-    }
+if (!dataInicial || !dataFinal) {
+    return res.status(400).json({ error: "Parâmetros dataInicial e dataFinal são obrigatórios." });
+}
+
 
     const tokens = readTokens();
     if (!tokens || !tokens.access_token) {
         return res.status(500).json({ error: "Acess token não encontrado. Autentique-se primeiro." });
     }
 
-    const url = `https://api.mercadolibre.com/orders/search?seller=${process.env.CLIENT_ID}&order.date_created.from=${DataInicial}&order.date_created.to=${Datafinal}`;
+    const url = `https://api.mercadolibre.com/orders/search?seller=${process.env.CLIENT_ID}&order.date_created.from=${encodeURIComponent(dataInicial)}&order.date_created.to=${encodeURIComponent(dataFinal)};`;
 const response = await axios.get(url, {
     headers: {
         "Authorization": `Bearer ${tokens.access_token}`,
